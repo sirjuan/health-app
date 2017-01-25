@@ -1,0 +1,9 @@
+<p *ngFor="let question of questions">
+{{question.id}}.  {{question.text}} <br>
+<button 
+  *ngFor="let answer of question.answers"
+  (click)="this._countService.countValues(answer.type, answer.value)" 
+>
+  {{answer.text}}
+</button>
+</p>
