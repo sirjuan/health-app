@@ -1,9 +1,29 @@
-<p *ngFor="let question of questions">
-{{question.id}}.  {{question.text}} <br>
-<button 
-  *ngFor="let answer of question.answers"
-  (click)="this._countService.countValues(answer.type, answer.value)" 
->
-  {{answer.text}}
-</button>
-</p>
+<div *ngFor="let question of questions" >
+
+  <div *ngFor="let quizQuestion of question.content">
+{{quizQuestion.id}}.  {{quizQuestion.text}} <br>
+<span *ngFor="let answer of quizQuestion.answers"
+      [ngSwitch]="answer.value" >
+
+      <button
+            *ngSwitchCase="0"
+            class="btn btn-danger btn-lg" 
+            [ngClass]="setClasses(question.id)"
+            (click)="this._countService.countValues(question.typeId, answer.value)" > 
+        
+                  {{answer.text}}
+
+      </button>
+      <button
+            *ngSwitchDefault
+            class="btn btn-success btn-lg" 
+            [ngClass]="setClasses(question.id)"
+            (click)="this._countService.countValues(question.typeId, answer.value)" > 
+        
+                  {{answer.text}}
+
+      </button>
+
+</span>
+</div>
+</div>

@@ -8,54 +8,40 @@ import { CountService } from '../count.service';
   
 })
 export class QuestionnaireComponent implements OnInit {
-  
-  questions = [{
-    id: 1,
-    text: 'Have you slept enough?',
-    answers: [{
-      id: 1,
-      text: 'Yes',
-      type: 'sleep',
-      value: 1
-    },
-    {
-      id: 2,
-      text: 'No',
-      type: 'sleep',
-      value: 0
-    }]
-
-  },
-  {
-    id: 2,
-    text: 'Have you eaten?',
-    answers: [{
-      id: 1,
-      text: 'Yes',
-      type: 'food',
-      value: 1
-    },
-    {
-      id: 2,
-      text: 'No',
-      type: 'food',
-      value: 0
-    }]
-    
-  
-
-  },
-  
-  ];
-
+  counter = 1;
+  questions = [];
+  quizQuestions = [];
+  someProperty = false;
   title: string;
 
+  isActive(id) {
+    console.log()
+    if (this.counter = this.questions[this.counter-1].id) {
+        this.someProperty = true;
+    }
+  }
+  setClasses(id) {
+
+    console.log('id ' + id);
+    console.log('counter ' + this.counter);
+        if (this.counter = id) {
+        this.someProperty = true;
+    }
+    let classes = {
+      show: this.someProperty,
+      notShow: !this.someProperty
+
+    };
+    return classes;
+
+  }
   constructor(private _countService: CountService) { 
 
    }
 
   ngOnInit() {
- this.title = this._countService.someMethod();
+this.questions = this._countService.getQuestions();
+
   }
 
 }

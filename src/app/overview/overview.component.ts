@@ -8,10 +8,13 @@ import { CountService } from '../count.service';
 })
 export class OverviewComponent implements OnInit {
   foodCount = [];
+  questions = [];
+  answers =  [];
   constructor(private _countService: CountService) { }
 
   ngOnInit() {
-   
+   this.questions = this._countService.getQuestions();
+   this.answers = this._countService.getAnswers();
   }
 
 }

@@ -1,5 +1,7 @@
-<p>
-  overview works!
-  {{this._countService.showValues('food')}}
- 
-</p>
+<div    *ngFor="let question of questions"
+        class="well well-lg">
+Your score for {{question.typeName}} questions was {{this._countService.showValues(question.typeId)}}
+</div>
+
+
+
